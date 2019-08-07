@@ -51,7 +51,7 @@ class InsightsClient(object):
         # else:
         print('writing pidfile to ' + constants.pidfile)
         with open(constants.pidfile, 'a') as pidfile:
-            pidfile.write(os.getpid())
+            pidfile.write(str(os.getpid()))
         # setup insights connection placeholder
         # used for requests
         self.session = None
