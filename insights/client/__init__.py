@@ -48,10 +48,10 @@ class InsightsClient(object):
         if setup_logging:
             self.set_up_logging()
             try_auto_configuration(self.config)
-        else:
-            print('writing pidfile to ' + constants.pidfile)
-            with open(constants.pidfile, 'a') as pidfile:
-                pidfile.write(os.getpid())
+        # else:
+        print('writing pidfile to ' + constants.pidfile)
+        with open(constants.pidfile, 'a') as pidfile:
+            pidfile.write(os.getpid())
         # setup insights connection placeholder
         # used for requests
         self.session = None
