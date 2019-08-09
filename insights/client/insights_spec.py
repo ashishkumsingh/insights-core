@@ -44,6 +44,7 @@ class InsightsCommand(InsightsSpec):
         Execute a command through system shell. First checks to see if
         the requested command is executable. Returns (returncode, stdout, 0)
         '''
+        # let systemd know we're still going
         if self.is_hostname:
             # short circuit for hostame with internal method
             return determine_hostname()
