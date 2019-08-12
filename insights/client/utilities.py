@@ -290,5 +290,4 @@ def sd_notify():
         logger.debug('Could not launch systemd-notify.')
         return
     stdout, stderr = proc.communicate()
-    logger.debug(stdout)
-    logger.debug(stderr)
+    logger.debug('systemd-notify returned %s', proc.returncode)
