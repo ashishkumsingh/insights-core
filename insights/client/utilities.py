@@ -274,7 +274,7 @@ def print_egg_versions():
         logger.debug('%s: %s', egg, version)
 
 
-def sd_notify(pid):
+def sd_notify():
     '''
     Let systemd know we're still executing
     '''
