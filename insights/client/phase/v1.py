@@ -6,6 +6,7 @@ import os
 import shutil
 import sys
 import six
+import atexit
 
 from insights.client import InsightsClient
 from insights.client.config import InsightsConfig
