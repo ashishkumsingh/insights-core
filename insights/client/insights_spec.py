@@ -9,7 +9,7 @@ from tempfile import NamedTemporaryFile
 from insights.util import mangle
 
 from .constants import InsightsConstants as constants
-from .utilities import determine_hostname
+from .utilities import determine_hostname, sd_notify
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +45,8 @@ class InsightsCommand(InsightsSpec):
         the requested command is executable. Returns (returncode, stdout, 0)
         '''
         # let systemd know we're still going
+        sd_notify()
+
         if self.is_hostname:
             # short circuit for hostame with internal method
             return determine_hostname()
@@ -149,6 +151,9 @@ class InsightsFile(InsightsSpec):
         '''
         Get file content, selecting only lines we are interested in
         '''
+        # let systemd know we're still going
+        sd_notify()
+
         if not os.path.isfile(self.real_path):
             logger.debug('File %s does not exist', self.real_path)
             return

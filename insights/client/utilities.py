@@ -281,10 +281,14 @@ def sd_notify(pid):
     pid = None
     with open(constants.pidfile) as pidfile:
         pid = pidfile.read()
+    if not pid:
+        logger.debug('Pidfile could not be read.')
+        return
     try:
         proc = Popen(['/usr/bin/systemd-notify', '--pid=' + str(pid), 'WATCHDOG=1'])
     except OSError:
         logger.debug('Could not launch systemd-notify.')
+        return
     stdout, stderr = proc.communicate()
-    print(stdout)
-    print(stderr)
+    logger.debug(stdout)
+    logger.debug(stderr)
