@@ -63,8 +63,9 @@ class PcsQuorumStauts(CommandParser):
     def parse_content(self, content):
         if not content:
             raise SkipException("Empty content")
-        if len(content) < 21 or not ('Quorum information' in content[0] and 'Votequorum information' in
-            content[9] and 'Membership information' in content[17]):
+        if len(content) < 21 or not ('Quorum information' in content[0]
+                                     and 'Votequorum information' in content[9]
+                                     and 'Membership information' in content[17]):
             raise ParseException("Incorrect content: '{0}'".format(content))
 
         self.quorum_info = {}
